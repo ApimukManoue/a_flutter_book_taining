@@ -1,6 +1,6 @@
 /*โครงสร้างหลักแบบแยก Scaffold ไปหน้าอื่นแต่ละหน้า */
 import 'package:flutter/material.dart';
-import './screens/myScaffold.dart';
+import 'screens/chpt07.dart';
 
 void main(List<String> args) =>  runApp(MyApp());
 
