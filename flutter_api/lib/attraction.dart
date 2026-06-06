@@ -1,6 +1,6 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;              // fltter pub add http ต้องเพิ่ม package http ก่อนถึงจะสามารถ import ได้
+import 'dart:convert';
 
 class AttractionScreen extends StatefulWidget {
   const AttractionScreen({super.key});
@@ -31,7 +31,7 @@ class _AttractionScreenState extends State<AttractionScreen> {
   } 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {                    // สร้าง UI เพื่อแสดงขผล
     return Scaffold(    
       body: SafeArea(
         child: ListView.builder(
@@ -41,17 +41,21 @@ class _AttractionScreenState extends State<AttractionScreen> {
             return ListTile(
               leading:  Container(
                 width: MediaQuery.of(context).size.width * 0.2, // กำหนดความกว้างขอContainerเป็น 20% ของความกว้างหน้าจอ
-                decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)),), // กำหนดให้ขอบของ Container มีความโค้งมนด้วย BorderRadius          ),
+                decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5)),), // กำหนดให้ขอบของ Container มีความโค้งมนด้วย BorderRadius          ),
                 clipBehavior: Clip.antiAlias, // กำหนดให้รูปภาพถูกตัดขอบตามที่กำหนดไว้ใน BoxDecoration
                 child: Image.network(
                   fit: BoxFit.cover, // กำหนดให้รูปภาพเต็มพื้นที่ที่กำหนดไว้
                   attraction['coverimage']
                   )
                 ),
-              title: Text(attraction['name']),           
+              title: Text(attraction['name']),    
+              subtitle: Text(
+                attraction['detail'],
+                maxLines: 2, // กำหนดให้แสดงข้อความได้สูงสุด 2 บรรทัด
+                overflow: TextOverflow.ellipsis, // กำหนดให้แสดง ... เมื่อข้อความยาวเกินกว่าที่กำหนด
+              ),       
             );
           },
-
         ),
       ),
     );
