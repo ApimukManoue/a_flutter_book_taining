@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;              // fltter pub add http ต้องเพิ่ม package http ก่อนถึงจะสามารถ import ได้
-import 'dart:convert';
+import 'package:flutter_api/attraction_detail.dart';
+import 'package:http/http.dart' as http;              // flutter pub add http ต้องเพิ่ม package http ก่อนถึงจะสามารถ import ได้
+import 'dart:convert';                 // ใช้สำหรับแปลงข้อมูล JSON ที่ได้รับจาก API ให้เป็นรูปแบบที่สามารถใช้งานได้ใน Flutter
 
 class AttractionScreen extends StatefulWidget {
   const AttractionScreen({super.key});
@@ -53,7 +54,16 @@ class _AttractionScreenState extends State<AttractionScreen> {
                 attraction['detail'],
                 maxLines: 2, // กำหนดให้แสดงข้อความได้สูงสุด 2 บรรทัด
                 overflow: TextOverflow.ellipsis, // กำหนดให้แสดง ... เมื่อข้อความยาวเกินกว่าที่กำหนด
-              ),       
+              ), 
+              // เมื่อผู้ใช้แตะที่ ListTile จะนำไปยังหน้ารายละเอียดของสถานที่ท่องเที่ยว โดยส่งค่า id ของสถานที่ท่องเที่ยวไปยังหน้ารายละเอียด
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AttractionDetailScreen(id: attraction['id']),
+                  ),
+                );
+              }
             );
           },
         ),
