@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;              // flutter pub add http ต้องเพิ่ม package http ก่อนถึงจะสามารถ import ได้
-import 'dart:convert';
+import 'dart:convert';           // ใช้สำหรับแปลงข้อมูล JSON ที่ได้รับจาก API ให้เป็นรูปแบบที่สามารถใช้งานได้ใน Flutter
 
 class AttractionDetailScreen extends StatefulWidget {
   final int id;                       // ประกาศตัวแปร id เพื่อรับค่า id ของสถานที่ท่องเที่ยวที่ถูกส่งมาจากหน้ารายการสถานที่ท่องเที่ยว
